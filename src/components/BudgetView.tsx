@@ -92,7 +92,7 @@ export const BudgetView: React.FC<BudgetViewProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
           <span className="text-xs font-medium text-slate-500 dark:text-slate-400 block mb-1">
-            Teto Total Planejado
+            Plafond Total Planeado
           </span>
           <div className="text-2xl font-bold font-mono tabular-nums text-slate-900 dark:text-white">
             {formatCurrency(summary.totalPlanejado)}
@@ -110,13 +110,13 @@ export const BudgetView: React.FC<BudgetViewProps> = ({
             {formatCurrency(summary.totalRealizado)}
           </div>
           <span className="text-xs text-slate-500 mt-2 block">
-            {summary.percConsumido.toFixed(1)}% do limite planejado
+            {summary.percConsumido.toFixed(1)}% do limite planeado
           </span>
         </div>
 
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
           <span className="text-xs font-medium text-slate-500 dark:text-slate-400 block mb-1">
-            Saldo Restante para Gastar
+            Saldo Disponível para Gastar
           </span>
           <div className={`text-2xl font-bold font-mono tabular-nums ${
             summary.saldoRestante >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
@@ -124,7 +124,7 @@ export const BudgetView: React.FC<BudgetViewProps> = ({
             {formatCurrency(summary.saldoRestante)}
           </div>
           <span className="text-xs text-slate-500 mt-2 block">
-            {summary.saldoRestante >= 0 ? 'Dentro do planejado' : 'Orçamento estourado'}
+            {summary.saldoRestante >= 0 ? 'Dentro do planeado' : 'Orçamento ultrapassado'}
           </span>
         </div>
 
@@ -158,10 +158,10 @@ export const BudgetView: React.FC<BudgetViewProps> = ({
         <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
-              Planejamento por Categoria (Planejado vs. Realizado)
+              Orçamento por Categoria (Planeado vs. Realizado)
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Clique no valor planejado para ajustar o teto da categoria para este mês.
+              Clique no valor planeado para ajustar o limite da categoria para este mês.
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -181,11 +181,11 @@ export const BudgetView: React.FC<BudgetViewProps> = ({
               <tr className="bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300">
                 <th className="py-2.5 px-4 font-semibold">Categoria</th>
                 <th className="py-2.5 px-4 font-semibold">Tipo</th>
-                <th className="py-2.5 px-4 font-semibold text-right">Planejado (Teto)</th>
+                <th className="py-2.5 px-4 font-semibold text-right">Planeado (Limite)</th>
                 <th className="py-2.5 px-4 font-semibold text-right">Realizado (Gasto)</th>
                 <th className="py-2.5 px-4 font-semibold text-right">Saldo Restante</th>
                 <th className="py-2.5 px-4 font-semibold w-48">Progresso & Consumo</th>
-                <th className="py-2.5 px-4 font-semibold text-center w-28">Status</th>
+                <th className="py-2.5 px-4 font-semibold text-center w-28">Estado</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
@@ -233,7 +233,7 @@ export const BudgetView: React.FC<BudgetViewProps> = ({
                           type="button"
                           onClick={() => handleStartEdit(cat.id, planejado)}
                           className="hover:underline hover:text-emerald-600 inline-flex items-center gap-1 group"
-                          title="Clique para editar teto orçamentário"
+                          title="Clique para editar limite orçamental"
                         >
                           <span>{formatCurrency(planejado)}</span>
                           <Edit3 className="w-3 h-3 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -280,7 +280,7 @@ export const BudgetView: React.FC<BudgetViewProps> = ({
                       {isOverBudget ? (
                         <span className="inline-flex items-center gap-1 text-rose-600 dark:text-rose-400 font-medium text-[11px]">
                           <ShieldAlert className="w-3.5 h-3.5" />
-                          <span>Excedido</span>
+                          <span>Ultrapassado</span>
                         </span>
                       ) : isWarning ? (
                         <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-medium text-[11px]">

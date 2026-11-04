@@ -27,7 +27,7 @@ export interface Account {
   id: string;
   nome: string;
   instituicao: string;
-  tipo: 'corrente' | 'poupanca' | 'investimento' | 'cartao' | 'carteira';
+  tipo: 'ordem' | 'corrente' | 'poupanca' | 'investimento' | 'cartao' | 'carteira';
   saldoInicial: number;
   cor: string;
 }

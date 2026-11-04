@@ -2,303 +2,304 @@ import { Category, Account, Transaction, FinancialGoal, BudgetPlan } from '../ty
 
 export const INITIAL_CATEGORIES: Category[] = [
   // Receitas
-  { id: 'cat_salario', nome: 'Salário & Pró-labore', tipo: 'receita', cor: '#10B981', icone: 'Briefcase' },
-  { id: 'cat_freelance', nome: 'Freelance & Consultoria', tipo: 'receita', cor: '#059669', icone: 'Laptop' },
-  { id: 'cat_dividendos', nome: 'Rendimentos & Dividendos', tipo: 'receita', cor: '#34D399', icone: 'TrendingUp' },
+  { id: 'cat_vencimento', nome: 'Vencimento & Subsídios', tipo: 'receita', cor: '#10B981', icone: 'Briefcase' },
+  { id: 'cat_recibos_verdes', nome: 'Prestação de Serviços / Recibos Verdes', tipo: 'receita', cor: '#059669', icone: 'Laptop' },
+  { id: 'cat_dividendos', nome: 'Rendimentos, Juros & Dividendos', tipo: 'receita', cor: '#34D399', icone: 'TrendingUp' },
   { id: 'cat_outras_rec', nome: 'Outras Receitas', tipo: 'receita', cor: '#6EE7B7', icone: 'PlusCircle' },
 
   // Despesas
-  { id: 'cat_moradia', nome: 'Moradia (Aluguel/Condomínio)', tipo: 'despesa', cor: '#EF4444', icone: 'Home', orcamentoPadrao: 2800 },
-  { id: 'cat_supermercado', nome: 'Supermercado & Feira', tipo: 'despesa', cor: '#F97316', icone: 'ShoppingCart', orcamentoPadrao: 1800 },
-  { id: 'cat_alimentacao', nome: 'Restaurantes & Delivery', tipo: 'despesa', cor: '#FB923C', icone: 'Utensils', orcamentoPadrao: 750 },
-  { id: 'cat_transporte', nome: 'Transporte & Combustível', tipo: 'despesa', cor: '#F59E0B', icone: 'Car', orcamentoPadrao: 650 },
-  { id: 'cat_contas', nome: 'Contas (Luz, Água, Internet)', tipo: 'despesa', cor: '#EAB308', icone: 'Zap', orcamentoPadrao: 550 },
-  { id: 'cat_saude', nome: 'Saúde & Farmácia', tipo: 'despesa', cor: '#EC4899', icone: 'HeartPulse', orcamentoPadrao: 400 },
-  { id: 'cat_educacao', nome: 'Educação & Livros', tipo: 'despesa', cor: '#8B5CF6', icone: 'GraduationCap', orcamentoPadrao: 350 },
-  { id: 'cat_lazer', nome: 'Lazer, Viagens & Streaming', tipo: 'despesa', cor: '#6366F1', icone: 'Film', orcamentoPadrao: 600 },
-  { id: 'cat_outros_desp', nome: 'Diversos & Imprevistos', tipo: 'despesa', cor: '#64748B', icone: 'HelpCircle', orcamentoPadrao: 400 },
+  { id: 'cat_habitacao', nome: 'Habitação (Renda / Prestação & Condomínio)', tipo: 'despesa', cor: '#EF4444', icone: 'Home', orcamentoPadrao: 850 },
+  { id: 'cat_supermercado', nome: 'Supermercado & Hipermercado (Continente/Pingo Doce)', tipo: 'despesa', cor: '#F97316', icone: 'ShoppingCart', orcamentoPadrao: 450 },
+  { id: 'cat_restauracao', nome: 'Restauração, Cafés & Takeaway', tipo: 'despesa', cor: '#FB923C', icone: 'Utensils', orcamentoPadrao: 200 },
+  { id: 'cat_transportes', nome: 'Transportes, Combustível & Via Verde', tipo: 'despesa', cor: '#F59E0B', icone: 'Car', orcamentoPadrao: 180 },
+  { id: 'cat_servicos', nome: 'Serviços (Eletricidade EDP, Água, Telecomunicações)', tipo: 'despesa', cor: '#EAB308', icone: 'Zap', orcamentoPadrao: 160 },
+  { id: 'cat_saude', nome: 'Saúde, Farmácia & Seguro', tipo: 'despesa', cor: '#EC4899', icone: 'HeartPulse', orcamentoPadrao: 100 },
+  { id: 'cat_educacao', nome: 'Educação, Formação & Livros', tipo: 'despesa', cor: '#8B5CF6', icone: 'GraduationCap', orcamentoPadrao: 80 },
+  { id: 'cat_lazer', nome: 'Lazer, Viagens, Ginásio & Subscrições', tipo: 'despesa', cor: '#6366F1', icone: 'Film', orcamentoPadrao: 150 },
+  { id: 'cat_outros_desp', nome: 'Despesas Diversas & Imprevistos', tipo: 'despesa', cor: '#64748B', icone: 'HelpCircle', orcamentoPadrao: 120 },
 
-  // Investimentos
-  { id: 'cat_reserva', nome: 'Reserva de Emergência', tipo: 'investimento', cor: '#0284C7', icone: 'ShieldCheck', orcamentoPadrao: 1000 },
-  { id: 'cat_rendafixa', nome: 'Tesouro & Renda Fixa', tipo: 'investimento', cor: '#0369A1', icone: 'Landmark', orcamentoPadrao: 800 },
-  { id: 'cat_rendavariavel', nome: 'Ações & Fundos Imobiliários', tipo: 'investimento', cor: '#075985', icone: 'BarChart2', orcamentoPadrao: 1000 },
+  // Investimentos / Poupança
+  { id: 'cat_fundo_emergencia', nome: 'Fundo de Emergência (Certificados de Aforro)', tipo: 'investimento', cor: '#0284C7', icone: 'ShieldCheck', orcamentoPadrao: 250 },
+  { id: 'cat_etf_acoes', nome: 'ETFs Mundiais (VWCE/IWDA) & Ações', tipo: 'investimento', cor: '#0369A1', icone: 'Landmark', orcamentoPadrao: 300 },
+  { id: 'cat_ppr', nome: 'PPR (Plano Poupança Reforma)', tipo: 'investimento', cor: '#075985', icone: 'BarChart2', orcamentoPadrao: 150 },
 ];
 
 export const INITIAL_ACCOUNTS: Account[] = [
-  { id: 'acc_itau', nome: 'Itaú Unibanco', instituicao: 'Banco Itaú', tipo: 'corrente', saldoInicial: 4850.00, cor: '#EC7000' },
-  { id: 'acc_nubank', nome: 'Nubank NuConta', instituicao: 'Nubank', tipo: 'corrente', saldoInicial: 3120.45, cor: '#820AD1' },
-  { id: 'acc_inter', nome: 'Inter Investimentos', instituicao: 'Banco Inter', tipo: 'investimento', saldoInicial: 28400.00, cor: '#FF7A00' },
-  { id: 'acc_xp_card', nome: 'Cartão XP Infinite', instituicao: 'XP Investimentos', tipo: 'cartao', saldoInicial: -1680.00, cor: '#111827' },
-  { id: 'acc_carteira', nome: 'Dinheiro Físico', instituicao: 'Carteira', tipo: 'carteira', saldoInicial: 340.00, cor: '#10B981' },
+  { id: 'acc_cgd', nome: 'Caixa Geral de Depósitos', instituicao: 'CGD', tipo: 'ordem', saldoInicial: 2450.00, cor: '#0054A6' },
+  { id: 'acc_millennium', nome: 'Millennium BCP', instituicao: 'Millennium BCP', tipo: 'ordem', saldoInicial: 1820.50, cor: '#9A1032' },
+  { id: 'acc_activobank', nome: 'ActivoBank', instituicao: 'ActivoBank', tipo: 'ordem', saldoInicial: 980.20, cor: '#00A3E0' },
+  { id: 'acc_degiro', nome: 'DEGIRO / XTB Investimentos', instituicao: 'DEGIRO', tipo: 'investimento', saldoInicial: 14500.00, cor: '#111827' },
+  { id: 'acc_wizink', nome: 'Cartão WiZink Rewards', instituicao: 'WiZink', tipo: 'cartao', saldoInicial: -320.00, cor: '#E60000' },
+  { id: 'acc_carteira', nome: 'Numerário / Carteira', instituicao: 'Carteira', tipo: 'carteira', saldoInicial: 85.00, cor: '#10B981' },
 ];
 
 export const INITIAL_TRANSACTIONS: Transaction[] = [
-  // Novembro 2026 (Mês Atual)
+  // Novembro 2026 (Mês Atual em Portugal)
   {
-    id: 'tx_101',
+    id: 'tx_pt_101',
     data: '2026-11-01',
-    descricao: 'Salário Mensal Corporativo',
-    categoriaId: 'cat_salario',
+    descricao: 'Vencimento Líquido Mensal + Subsídio de Alimentação',
+    categoriaId: 'cat_vencimento',
     tipo: 'receita',
-    contaId: 'acc_itau',
-    valor: 9200.00,
+    contaId: 'acc_cgd',
+    valor: 2480.00,
     status: 'liquidado',
-    observacoes: 'Depósito em conta Itaú'
+    observacoes: 'Transferência SEPA entidade patronal'
   },
   {
-    id: 'tx_102',
+    id: 'tx_pt_102',
     data: '2026-11-02',
-    descricao: 'Aluguel do Apartamento + Condomínio',
-    categoriaId: 'cat_moradia',
+    descricao: 'Prestação Crédito Habitação + Condomínio',
+    categoriaId: 'cat_habitacao',
     tipo: 'despesa',
-    contaId: 'acc_itau',
-    valor: 2750.00,
+    contaId: 'acc_cgd',
+    valor: 780.00,
     status: 'liquidado',
-    observacoes: 'Transferência Pix imobiliária'
+    observacoes: 'Débito direto bancário'
   },
   {
-    id: 'tx_103',
+    id: 'tx_pt_103',
     data: '2026-11-02',
-    descricao: 'Aporte Tesouro Selic 2029',
-    categoriaId: 'cat_reserva',
+    descricao: 'Reforço Certificados de Aforro (Série F)',
+    categoriaId: 'cat_fundo_emergencia',
     tipo: 'investimento',
-    contaId: 'acc_inter',
-    valor: 1000.00,
+    contaId: 'acc_cgd',
+    valor: 250.00,
     status: 'liquidado',
-    observacoes: 'Reforço de reserva de emergência'
+    observacoes: 'AforroNet CTT'
   },
   {
-    id: 'tx_104',
+    id: 'tx_pt_104',
     data: '2026-11-03',
-    descricao: 'Compras Supermercado Pão de Açúcar',
+    descricao: 'Compras Hipermercado Continente Telheiras',
     categoriaId: 'cat_supermercado',
     tipo: 'despesa',
-    contaId: 'acc_xp_card',
-    valor: 642.30,
+    contaId: 'acc_wizink',
+    valor: 168.45,
     status: 'liquidado',
-    observacoes: 'Compras da primeira quinzena'
+    observacoes: 'Compras da quinzena com Cartão Continente'
   },
   {
-    id: 'tx_105',
+    id: 'tx_pt_105',
     data: '2026-11-03',
-    descricao: 'Consultoria de Design UX/UI - Projeto Alpha',
-    categoriaId: 'cat_freelance',
+    descricao: 'Faturação Recibo Verde - Consultoria Web',
+    categoriaId: 'cat_recibos_verdes',
     tipo: 'receita',
-    contaId: 'acc_nubank',
-    valor: 2400.00,
+    contaId: 'acc_activobank',
+    valor: 750.00,
     status: 'liquidado',
-    observacoes: 'Primeira parcela entrega wireframes'
+    observacoes: 'Retenção na fonte de IRS já deduzida'
   },
   {
-    id: 'tx_106',
+    id: 'tx_pt_106',
     data: '2026-11-04',
-    descricao: 'Abastecimento Gasolina Comum Posto Shell',
-    categoriaId: 'cat_transporte',
+    descricao: 'Combustível Repsol + Portagens Via Verde',
+    categoriaId: 'cat_transportes',
     tipo: 'despesa',
-    contaId: 'acc_nubank',
-    valor: 245.00,
+    contaId: 'acc_cgd',
+    valor: 82.50,
     status: 'liquidado',
-    observacoes: 'Tanque cheio'
+    observacoes: 'Gasóleo Simples e A1 Norte'
   },
   {
-    id: 'tx_107',
+    id: 'tx_pt_107',
     data: '2026-11-04',
-    descricao: 'Jantar Restaurante Italiano',
-    categoriaId: 'cat_alimentacao',
+    descricao: 'Jantar Restaurante Típico Português',
+    categoriaId: 'cat_restauracao',
     tipo: 'despesa',
-    contaId: 'acc_xp_card',
-    valor: 185.00,
+    contaId: 'acc_wizink',
+    valor: 54.00,
     status: 'liquidado',
-    observacoes: 'Jantar com a família'
+    observacoes: 'Jantar em família (com NIF na fatura)'
   },
   {
-    id: 'tx_108',
+    id: 'tx_pt_108',
     data: '2026-11-08',
-    descricao: 'Conta de Energia Enel',
-    categoriaId: 'cat_contas',
+    descricao: 'Fatura Eletricidade EDP Comercial',
+    categoriaId: 'cat_servicos',
     tipo: 'despesa',
-    contaId: 'acc_itau',
-    valor: 218.40,
+    contaId: 'acc_cgd',
+    valor: 68.20,
     status: 'pendente',
-    observacoes: 'Débito programado'
+    observacoes: 'Débito direto agendado'
   },
   {
-    id: 'tx_109',
+    id: 'tx_pt_109',
     data: '2026-11-10',
-    descricao: 'Internet Fibra Óptica 600MB',
-    categoriaId: 'cat_contas',
+    descricao: 'Pacote TV, Net Fibra 1Gbps & Voz (MEO)',
+    categoriaId: 'cat_servicos',
     tipo: 'despesa',
-    contaId: 'acc_nubank',
-    valor: 139.90,
+    contaId: 'acc_millennium',
+    valor: 42.99,
     status: 'pendente',
-    observacoes: 'Boleto bancário a vencer'
+    observacoes: 'Pagamento por entidade e referência Multibanco'
   },
   {
-    id: 'tx_110',
+    id: 'tx_pt_110',
     data: '2026-11-12',
-    descricao: 'Dividendos FIIs (HGLG11 / KNCR11)',
+    descricao: 'Dividendos Trimestrais de ETFs',
     categoriaId: 'cat_dividendos',
     tipo: 'receita',
-    contaId: 'acc_inter',
-    valor: 312.50,
+    contaId: 'acc_degiro',
+    valor: 94.30,
     status: 'pendente',
-    observacoes: 'Previsão de crédito na corretora'
+    observacoes: 'Crédito em conta corretora'
   },
   {
-    id: 'tx_111',
+    id: 'tx_pt_111',
     data: '2026-11-15',
-    descricao: 'Aporte Fundos Imobiliários',
-    categoriaId: 'cat_rendavariavel',
+    descricao: 'Reforço ETF Vanguard FTSE All-World (VWCE)',
+    categoriaId: 'cat_etf_acoes',
     tipo: 'investimento',
-    contaId: 'acc_inter',
-    valor: 850.00,
+    contaId: 'acc_degiro',
+    valor: 300.00,
     status: 'pendente',
-    observacoes: 'Reinvestimento de proventos'
+    observacoes: 'Aporte regular DCA na bolsa Euronext'
   },
   {
-    id: 'tx_112',
+    id: 'tx_pt_112',
     data: '2026-11-18',
-    descricao: 'Plano de Saúde Familiar',
+    descricao: 'Copagamento Seguro de Saúde Médis & Farmácia',
     categoriaId: 'cat_saude',
     tipo: 'despesa',
-    contaId: 'acc_itau',
-    valor: 390.00,
+    contaId: 'acc_cgd',
+    valor: 48.00,
     status: 'pendente',
-    observacoes: 'Mensalidade coparticipação'
+    observacoes: 'Consulta médica de rotina'
   },
   {
-    id: 'tx_113',
+    id: 'tx_pt_113',
     data: '2026-11-20',
-    descricao: 'Assinaturas Streaming (Netflix & Spotify)',
+    descricao: 'Mensalidade Ginásio Solinca & Subscrições',
     categoriaId: 'cat_lazer',
     tipo: 'despesa',
-    contaId: 'acc_xp_card',
-    valor: 89.80,
+    contaId: 'acc_wizink',
+    valor: 44.90,
     status: 'pendente',
-    observacoes: 'Recorrente no cartão'
+    observacoes: 'Ginásio + Spotify Premium'
   },
 
-  // Outubro 2026 (Mês Anterior - para histórico e comparação)
+  // Outubro 2026 (Mês Anterior - histórico)
   {
-    id: 'tx_001',
+    id: 'tx_pt_001',
     data: '2026-10-01',
-    descricao: 'Salário Mensal Corporativo',
-    categoriaId: 'cat_salario',
+    descricao: 'Vencimento Líquido Mensal + Subsídio',
+    categoriaId: 'cat_vencimento',
     tipo: 'receita',
-    contaId: 'acc_itau',
-    valor: 9200.00,
+    contaId: 'acc_cgd',
+    valor: 2480.00,
     status: 'liquidado',
-    observacoes: 'Mês anterior'
+    observacoes: 'Outubro 2026'
   },
   {
-    id: 'tx_002',
-    data: '2026-10-03',
-    descricao: 'Aluguel do Apartamento + Condomínio',
-    categoriaId: 'cat_moradia',
+    id: 'tx_pt_002',
+    data: '2026-10-02',
+    descricao: 'Prestação Crédito Habitação & Condomínio',
+    categoriaId: 'cat_habitacao',
     tipo: 'despesa',
-    contaId: 'acc_itau',
-    valor: 2750.00,
+    contaId: 'acc_cgd',
+    valor: 780.00,
     status: 'liquidado',
     observacoes: 'Pago'
   },
   {
-    id: 'tx_003',
+    id: 'tx_pt_003',
     data: '2026-10-05',
-    descricao: 'Supermercado Mês Todo',
+    descricao: 'Hipermercado Pingo Doce & Feira',
     categoriaId: 'cat_supermercado',
     tipo: 'despesa',
-    contaId: 'acc_xp_card',
-    valor: 1680.40,
+    contaId: 'acc_wizink',
+    valor: 412.30,
     status: 'liquidado',
-    observacoes: 'Compras gerais'
+    observacoes: 'Compras mensais'
   },
   {
-    id: 'tx_004',
+    id: 'tx_pt_004',
     data: '2026-10-08',
-    descricao: 'Consultoria Backend Node.js',
-    categoriaId: 'cat_freelance',
+    descricao: 'Consultoria Informática - Empresa Parceira',
+    categoriaId: 'cat_recibos_verdes',
     tipo: 'receita',
-    contaId: 'acc_nubank',
-    valor: 3500.00,
+    contaId: 'acc_activobank',
+    valor: 920.00,
     status: 'liquidado',
-    observacoes: 'Recebido via Pix'
+    observacoes: 'Recebido via transferência bancária'
   },
   {
-    id: 'tx_005',
+    id: 'tx_pt_005',
     data: '2026-10-10',
-    descricao: 'Aporte Tesouro IPCA+ 2035',
-    categoriaId: 'cat_rendafixa',
+    descricao: 'Entrega Anual PPR Alves Ribeiro',
+    categoriaId: 'cat_ppr',
     tipo: 'investimento',
-    contaId: 'acc_inter',
-    valor: 1500.00,
+    contaId: 'acc_millennium',
+    valor: 400.00,
     status: 'liquidado',
-    observacoes: 'Investimento mensal'
+    observacoes: 'Benefício fiscal IRS de 20%'
   },
   {
-    id: 'tx_006',
+    id: 'tx_pt_006',
     data: '2026-10-15',
-    descricao: 'Curso Avançado de Finanças & Python',
+    descricao: 'Inscrição em Curso e Certificação Profissional',
     categoriaId: 'cat_educacao',
     tipo: 'despesa',
-    contaId: 'acc_xp_card',
-    valor: 340.00,
+    contaId: 'acc_cgd',
+    valor: 95.00,
     status: 'liquidado',
-    observacoes: 'Investimento em carreira'
+    observacoes: 'Dedutível no e-Fatura'
   },
   {
-    id: 'tx_007',
+    id: 'tx_pt_007',
     data: '2026-10-22',
-    descricao: 'Manutenção Preventiva do Carro',
-    categoriaId: 'cat_transporte',
+    descricao: 'Revisão Automóvel & Inspeção Periódica (IPO)',
+    categoriaId: 'cat_transportes',
     tipo: 'despesa',
-    contaId: 'acc_itau',
-    valor: 520.00,
+    contaId: 'acc_cgd',
+    valor: 145.00,
     status: 'liquidado',
-    observacoes: 'Troca de óleo e filtros'
+    observacoes: 'Oficina e centro de inspeções'
   }
 ];
 
 export const INITIAL_GOALS: FinancialGoal[] = [
   {
-    id: 'goal_reserva',
-    titulo: 'Reserva de Emergência (6 Meses)',
-    valorAlvo: 35000.00,
-    valorAtual: 24500.00,
+    id: 'goal_fundo_emergencia',
+    titulo: 'Fundo de Emergência (6 Meses)',
+    valorAlvo: 9000.00,
+    valorAtual: 6250.00,
     dataLimite: '2027-04-30',
     cor: '#0284C7',
-    categoria: 'Segurança'
+    categoria: 'Segurança & Estabilidade'
   },
   {
-    id: 'goal_viagem',
-    titulo: 'Viagem de Férias para Europa',
-    valorAlvo: 16000.00,
-    valorAtual: 9800.00,
-    dataLimite: '2027-09-15',
+    id: 'goal_ferias',
+    titulo: 'Férias de Verão no Algarve / Açores',
+    valorAlvo: 2200.00,
+    valorAtual: 1450.00,
+    dataLimite: '2027-07-31',
     cor: '#10B981',
-    categoria: 'Lazer'
+    categoria: 'Lazer & Família'
   },
   {
-    id: 'goal_imovel',
-    titulo: 'Entrada Financiamento Imóvel',
-    valorAlvo: 80000.00,
-    valorAtual: 38200.00,
+    id: 'goal_habitacao',
+    titulo: 'Amortização Antecipada do Crédito Habitação',
+    valorAlvo: 15000.00,
+    valorAtual: 7800.00,
     dataLimite: '2028-12-31',
     cor: '#8B5CF6',
-    categoria: 'Patrimônio'
+    categoria: 'Património Imobiliário'
   }
 ];
 
 export const INITIAL_BUDGETS: BudgetPlan[] = [
-  { categoriaId: 'cat_moradia', mesAno: '2026-11', valorPlanejado: 2800 },
-  { categoriaId: 'cat_supermercado', mesAno: '2026-11', valorPlanejado: 1800 },
-  { categoriaId: 'cat_alimentacao', mesAno: '2026-11', valorPlanejado: 750 },
-  { categoriaId: 'cat_transporte', mesAno: '2026-11', valorPlanejado: 650 },
-  { categoriaId: 'cat_contas', mesAno: '2026-11', valorPlanejado: 550 },
-  { categoriaId: 'cat_saude', mesAno: '2026-11', valorPlanejado: 400 },
-  { categoriaId: 'cat_educacao', mesAno: '2026-11', valorPlanejado: 350 },
-  { categoriaId: 'cat_lazer', mesAno: '2026-11', valorPlanejado: 600 },
-  { categoriaId: 'cat_outros_desp', mesAno: '2026-11', valorPlanejado: 400 },
-  { categoriaId: 'cat_reserva', mesAno: '2026-11', valorPlanejado: 1000 },
-  { categoriaId: 'cat_rendafixa', mesAno: '2026-11', valorPlanejado: 800 },
-  { categoriaId: 'cat_rendavariavel', mesAno: '2026-11', valorPlanejado: 1000 }
+  { categoriaId: 'cat_habitacao', mesAno: '2026-11', valorPlanejado: 850 },
+  { categoriaId: 'cat_supermercado', mesAno: '2026-11', valorPlanejado: 450 },
+  { categoriaId: 'cat_restauracao', mesAno: '2026-11', valorPlanejado: 200 },
+  { categoriaId: 'cat_transportes', mesAno: '2026-11', valorPlanejado: 180 },
+  { categoriaId: 'cat_servicos', mesAno: '2026-11', valorPlanejado: 160 },
+  { categoriaId: 'cat_saude', mesAno: '2026-11', valorPlanejado: 100 },
+  { categoriaId: 'cat_educacao', mesAno: '2026-11', valorPlanejado: 80 },
+  { categoriaId: 'cat_lazer', mesAno: '2026-11', valorPlanejado: 150 },
+  { categoriaId: 'cat_outros_desp', mesAno: '2026-11', valorPlanejado: 120 },
+  { categoriaId: 'cat_fundo_emergencia', mesAno: '2026-11', valorPlanejado: 250 },
+  { categoriaId: 'cat_etf_acoes', mesAno: '2026-11', valorPlanejado: 300 },
+  { categoriaId: 'cat_ppr', mesAno: '2026-11', valorPlanejado: 150 }
 ];

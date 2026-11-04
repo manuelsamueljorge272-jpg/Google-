@@ -53,9 +53,29 @@ export default function App() {
   // Selected Month filter ('2026-11' as current default, or 'all')
   const [selectedMonth, setSelectedMonth] = useState<string>('2026-11');
 
+  // Market Versioning check: ensure Portuguese market data is loaded
+  useEffect(() => {
+    const marketVer = localStorage.getItem('fin_market_version');
+    if (marketVer !== 'pt-PT-v1') {
+      localStorage.setItem('fin_market_version', 'pt-PT-v1');
+      localStorage.setItem('fin_transactions', JSON.stringify(INITIAL_TRANSACTIONS));
+      localStorage.setItem('fin_categories', JSON.stringify(INITIAL_CATEGORIES));
+      localStorage.setItem('fin_accounts', JSON.stringify(INITIAL_ACCOUNTS));
+      localStorage.setItem('fin_budgets', JSON.stringify(INITIAL_BUDGETS));
+      localStorage.setItem('fin_goals', JSON.stringify(INITIAL_GOALS));
+      setTransactions(INITIAL_TRANSACTIONS);
+      setCategories(INITIAL_CATEGORIES);
+      setAccounts(INITIAL_ACCOUNTS);
+      setBudgets(INITIAL_BUDGETS);
+      setGoals(INITIAL_GOALS);
+    }
+  }, []);
+
   // Core Financial State with LocalStorage Persistence
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
     try {
+      const marketVer = localStorage.getItem('fin_market_version');
+      if (marketVer !== 'pt-PT-v1') return INITIAL_TRANSACTIONS;
       const saved = localStorage.getItem('fin_transactions');
       return saved ? JSON.parse(saved) : INITIAL_TRANSACTIONS;
     } catch {
@@ -65,6 +85,8 @@ export default function App() {
 
   const [categories, setCategories] = useState<Category[]>(() => {
     try {
+      const marketVer = localStorage.getItem('fin_market_version');
+      if (marketVer !== 'pt-PT-v1') return INITIAL_CATEGORIES;
       const saved = localStorage.getItem('fin_categories');
       return saved ? JSON.parse(saved) : INITIAL_CATEGORIES;
     } catch {
@@ -74,6 +96,8 @@ export default function App() {
 
   const [accounts, setAccounts] = useState<Account[]>(() => {
     try {
+      const marketVer = localStorage.getItem('fin_market_version');
+      if (marketVer !== 'pt-PT-v1') return INITIAL_ACCOUNTS;
       const saved = localStorage.getItem('fin_accounts');
       return saved ? JSON.parse(saved) : INITIAL_ACCOUNTS;
     } catch {
@@ -83,6 +107,8 @@ export default function App() {
 
   const [budgets, setBudgets] = useState<BudgetPlan[]>(() => {
     try {
+      const marketVer = localStorage.getItem('fin_market_version');
+      if (marketVer !== 'pt-PT-v1') return INITIAL_BUDGETS;
       const saved = localStorage.getItem('fin_budgets');
       return saved ? JSON.parse(saved) : INITIAL_BUDGETS;
     } catch {
@@ -92,6 +118,8 @@ export default function App() {
 
   const [goals, setGoals] = useState<FinancialGoal[]>(() => {
     try {
+      const marketVer = localStorage.getItem('fin_market_version');
+      if (marketVer !== 'pt-PT-v1') return INITIAL_GOALS;
       const saved = localStorage.getItem('fin_goals');
       return saved ? JSON.parse(saved) : INITIAL_GOALS;
     } catch {
@@ -204,10 +232,10 @@ export default function App() {
     const valid: Transaction[] = imported.map((item, i) => ({
       id: item.id || `tx_imp_${Date.now()}_${i}`,
       data: item.data || new Date().toISOString().split('T')[0],
-      descricao: item.descricao || 'Lançamento importado',
+      descricao: item.descricao || 'Movimento importado',
       categoriaId: item.categoriaId || categories[0]?.id || 'cat_outros',
       tipo: item.tipo || 'despesa',
-      contaId: item.contaId || accounts[0]?.id || 'acc_nubank',
+      contaId: item.contaId || accounts[0]?.id || 'acc_cgd',
       valor: item.valor || 0,
       status: item.status || 'liquidado',
       observacoes: item.observacoes || '',
@@ -227,11 +255,12 @@ export default function App() {
     setAccounts(INITIAL_ACCOUNTS);
     setBudgets(INITIAL_BUDGETS);
     setGoals(INITIAL_GOALS);
-    localStorage.removeItem('fin_transactions');
-    localStorage.removeItem('fin_categories');
-    localStorage.removeItem('fin_accounts');
-    localStorage.removeItem('fin_budgets');
-    localStorage.removeItem('fin_goals');
+    localStorage.setItem('fin_market_version', 'pt-PT-v1');
+    localStorage.setItem('fin_transactions', JSON.stringify(INITIAL_TRANSACTIONS));
+    localStorage.setItem('fin_categories', JSON.stringify(INITIAL_CATEGORIES));
+    localStorage.setItem('fin_accounts', JSON.stringify(INITIAL_ACCOUNTS));
+    localStorage.setItem('fin_budgets', JSON.stringify(INITIAL_BUDGETS));
+    localStorage.setItem('fin_goals', JSON.stringify(INITIAL_GOALS));
   };
 
   // Period label for metric cards
@@ -337,9 +366,9 @@ export default function App() {
       <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-4 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-700 dark:text-slate-300">Planilha de Controle Financeiro</span>
+            <span className="font-semibold text-slate-700 dark:text-slate-300">FinPlanilha Portugal</span>
             <span aria-hidden="true">·</span>
-            <span>Fluxo de Caixa, Orçamento e Metas</span>
+            <span>Gestão de Movimentos, Orçamento e Poupança</span>
           </div>
           <div className="flex items-center gap-4">
             <button
@@ -347,10 +376,10 @@ export default function App() {
               onClick={handleResetData}
               className="hover:text-slate-900 dark:hover:text-white transition-colors"
             >
-              Restaurar dados iniciais
+              Repor dados de demonstração
             </button>
             <span aria-hidden="true">·</span>
-            <span>Exportação compatível com Excel e Google Planilhas</span>
+            <span>Exportação compatível com Excel e Google Sheets</span>
           </div>
         </div>
       </footer>

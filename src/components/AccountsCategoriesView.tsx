@@ -93,7 +93,7 @@ export const AccountsCategoriesView: React.FC<AccountsCategoriesViewProps> = ({
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
-              Contas & Cartões Cadastrados
+              Contas & Cartões Registados
             </h3>
             <p className="text-xs text-slate-500">
               Instituições financeiras e saldo inicial
@@ -122,7 +122,7 @@ export const AccountsCategoriesView: React.FC<AccountsCategoriesViewProps> = ({
                 <input
                   type="text"
                   required
-                  placeholder="Ex: Nubank, Itaú..."
+                  placeholder="Ex: CGD Ordem, Millennium, ActivoBank..."
                   value={accName}
                   onChange={e => setAccName(e.target.value)}
                   className="w-full text-xs p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg"
@@ -135,7 +135,7 @@ export const AccountsCategoriesView: React.FC<AccountsCategoriesViewProps> = ({
                 </label>
                 <input
                   type="text"
-                  placeholder="Ex: Banco Itaú"
+                  placeholder="Ex: Caixa Geral de Depósitos"
                   value={accInstitution}
                   onChange={e => setAccInstitution(e.target.value)}
                   className="w-full text-xs p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg"
@@ -151,17 +151,17 @@ export const AccountsCategoriesView: React.FC<AccountsCategoriesViewProps> = ({
                   onChange={e => setAccType(e.target.value as any)}
                   className="w-full text-xs p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg"
                 >
-                  <option value="corrente">Conta Corrente</option>
-                  <option value="investimento">Conta Investimento</option>
-                  <option value="poupanca">Poupança</option>
+                  <option value="ordem">Conta à Ordem</option>
+                  <option value="poupanca">Conta Poupança / Prazo</option>
+                  <option value="investimento">Conta Investimento / Corretora</option>
                   <option value="cartao">Cartão de Crédito</option>
-                  <option value="carteira">Dinheiro Físico</option>
+                  <option value="carteira">Numerário / Carteira</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-                  Saldo Inicial (R$)
+                  Saldo Inicial (€)
                 </label>
                 <input
                   type="text"
@@ -261,7 +261,7 @@ export const AccountsCategoriesView: React.FC<AccountsCategoriesViewProps> = ({
                     <button
                       type="button"
                       onClick={() => onDeleteAccount(acc.id)}
-                      title="Excluir conta"
+                      title="Eliminar conta"
                       className="p-1.5 text-slate-400 hover:text-rose-600 rounded transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -279,7 +279,7 @@ export const AccountsCategoriesView: React.FC<AccountsCategoriesViewProps> = ({
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
-              Categorias de Lançamento
+              Categorias de Movimento
             </h3>
             <p className="text-xs text-slate-500">
               Classificação para receitas, despesas e investimentos
@@ -308,7 +308,7 @@ export const AccountsCategoriesView: React.FC<AccountsCategoriesViewProps> = ({
                 <input
                   type="text"
                   required
-                  placeholder="Ex: Assinaturas, Manutenção..."
+                  placeholder="Ex: Subscrições, Oficinas..."
                   value={catName}
                   onChange={e => setCatName(e.target.value)}
                   className="w-full text-xs p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg"
@@ -343,7 +343,7 @@ export const AccountsCategoriesView: React.FC<AccountsCategoriesViewProps> = ({
                 type="submit"
                 className="px-3.5 py-1 text-xs font-semibold text-white bg-emerald-600 rounded hover:bg-emerald-700"
               >
-                Salvar Categoria
+                Guardar Categoria
               </button>
             </div>
           </form>
@@ -375,7 +375,7 @@ export const AccountsCategoriesView: React.FC<AccountsCategoriesViewProps> = ({
                   <button
                     type="button"
                     onClick={() => onDeleteCategory(cat.id)}
-                    title="Excluir categoria"
+                    title="Eliminar categoria"
                     className="text-slate-400 hover:text-rose-600 p-1"
                   >
                     <Trash2 className="w-3.5 h-3.5" />

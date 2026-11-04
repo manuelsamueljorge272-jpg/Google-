@@ -1,7 +1,7 @@
 import { Transaction, Category, Account } from '../types/finance';
 
-export const formatCurrency = (value: number, currency = 'BRL'): string => {
-  return new Intl.NumberFormat('pt-BR', {
+export const formatCurrency = (value: number, currency = 'EUR'): string => {
+  return new Intl.NumberFormat('pt-PT', {
     style: 'currency',
     currency: currency,
     minimumFractionDigits: 2,
@@ -12,8 +12,8 @@ export const formatCurrency = (value: number, currency = 'BRL'): string => {
 export const parseCurrencyInput = (input: string | number): number => {
   if (typeof input === 'number') return isNaN(input) ? 0 : input;
   if (!input) return 0;
-  // Handle PT-BR inputs like "1.250,50" or "1250.50"
-  let clean = input.trim().replace(/[R$\s]/g, '');
+  // Handle PT-PT and EUR inputs like "1 250,50 €", "1.250,50", "1250,50" or "1250.50"
+  let clean = input.trim().replace(/[€\sEURR$]/gi, '');
   if (clean.includes(',') && clean.includes('.')) {
     clean = clean.replace(/\./g, '').replace(',', '.');
   } else if (clean.includes(',')) {
@@ -23,7 +23,7 @@ export const parseCurrencyInput = (input: string | number): number => {
   return isNaN(parsed) ? 0 : parsed;
 };
 
-export const formatDateBR = (isoDate: string): string => {
+export const formatDatePT = (isoDate: string): string => {
   if (!isoDate) return '';
   const [year, month, day] = isoDate.split('-');
   if (!year || !month || !day) return isoDate;
@@ -53,7 +53,7 @@ export const exportTransactionsToCsv = (
   const catMap = new Map(categories.map(c => [c.id, c.nome]));
   const accMap = new Map(accounts.map(a => [a.id, a.nome]));
 
-  const headers = ['ID', 'Data', 'Descricao', 'Categoria', 'Tipo', 'Conta', 'Valor', 'Status', 'Observacoes'];
+  const headers = ['ID', 'Data', 'Descricao', 'Categoria', 'Tipo', 'Conta', 'Valor', 'Estado', 'Observacoes'];
   const rows = transactions.map(t => {
     return [
       t.id,
@@ -82,7 +82,6 @@ export const parseCsvToTransactions = (
   const delimiter = lines[0].includes(';') ? ';' : ',';
   const newTransactions: Partial<Transaction>[] = [];
 
-  // Map category and account names (lowercase trimmed) to IDs
   const catNameToId = new Map(categories.map(c => [c.nome.toLowerCase().trim(), c.id]));
   const accNameToId = new Map(accounts.map(a => [a.nome.toLowerCase().trim(), a.id]));
 
@@ -92,7 +91,6 @@ export const parseCsvToTransactions = (
 
     const cols = rawCols.map(c => c.trim().replace(/^"|"$/g, ''));
     
-    // Attempt parsing: either (ID, Data, Descricao, Categoria, Tipo, Conta, Valor, Status, Obs) or (Data, Descricao, Categoria, Tipo, Conta, Valor)
     let data = '';
     let descricao = '';
     let categoriaStr = '';
@@ -103,7 +101,6 @@ export const parseCsvToTransactions = (
     let observacoes = '';
 
     if (cols.length >= 8 && cols[0].startsWith('tx_')) {
-      // Full export format
       data = cols[1];
       descricao = cols[2];
       categoriaStr = cols[3];
@@ -113,7 +110,6 @@ export const parseCsvToTransactions = (
       statusStr = cols[7].toLowerCase();
       observacoes = cols[8] || '';
     } else {
-      // Standard format
       data = cols[0];
       descricao = cols[1];
       categoriaStr = cols[2];
@@ -124,7 +120,6 @@ export const parseCsvToTransactions = (
       observacoes = cols[7] || '';
     }
 
-    // Normalize date (support DD/MM/YYYY or YYYY-MM-DD)
     if (data.includes('/')) {
       const parts = data.split('/');
       if (parts.length === 3) {
@@ -137,12 +132,12 @@ export const parseCsvToTransactions = (
     const valor = parseCurrencyInput(valorStr);
 
     const categoriaId = catNameToId.get(categoriaStr.toLowerCase().trim()) || categories[0]?.id || 'cat_outros';
-    const contaId = accNameToId.get(contaStr.toLowerCase().trim()) || accounts[0]?.id || 'acc_nubank';
+    const contaId = accNameToId.get(contaStr.toLowerCase().trim()) || accounts[0]?.id || 'acc_cgd';
 
     newTransactions.push({
       id: `tx_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
       data: data || new Date().toISOString().split('T')[0],
-      descricao: descricao || 'Lançamento importado',
+      descricao: descricao || 'Movimento importado',
       categoriaId,
       tipo,
       contaId,

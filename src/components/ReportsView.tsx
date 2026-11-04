@@ -203,7 +203,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
           </div>
 
           {expensesByCategory.length === 0 ? (
-            <p className="text-xs text-slate-500 py-6 text-center">Nenhuma despesa registrada neste mês.</p>
+            <p className="text-xs text-slate-500 py-6 text-center">Nenhuma despesa registada neste mês.</p>
           ) : (
             <div className="space-y-3">
               {expensesByCategory.map(item => (
@@ -242,7 +242,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
           </div>
 
           {incomeByCategory.length === 0 ? (
-            <p className="text-xs text-slate-500 py-6 text-center">Nenhuma receita registrada neste mês.</p>
+            <p className="text-xs text-slate-500 py-6 text-center">Nenhuma receita registada neste mês.</p>
           ) : (
             <div className="space-y-3">
               {incomeByCategory.map(item => (
@@ -274,10 +274,10 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-xs">
         <div className="p-4 border-b border-slate-200 dark:border-slate-800">
           <h4 className="text-sm font-semibold text-slate-900 dark:text-white">
-            Demonstrativo Financeiro do Mês (DRE Gerencial)
+            Demonstração Financeira do Mês (Resumo Operacional)
           </h4>
           <p className="text-xs text-slate-500">
-            Resumo contábil e operacional de receitas, despesas e saldo retido.
+            Resumo de receitas, despesas e poupança retida.
           </p>
         </div>
 
@@ -311,7 +311,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
             </tr>
             <tr className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
               <td className="py-2.5 px-4 text-slate-600 dark:text-slate-400 pl-8">
-                (-) Aportes & Investimentos Realizados
+                (-) Poupança & Investimentos Realizados
               </td>
               <td className="py-2.5 px-4 text-right font-mono tabular-nums font-medium text-sky-600 dark:text-sky-400">
                 - {formatCurrency(totalInvestimentos)}
@@ -319,7 +319,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
             </tr>
             <tr className="bg-slate-100 dark:bg-slate-800 font-bold border-t-2 border-slate-200 dark:border-slate-700">
               <td className="py-3 px-4 text-slate-900 dark:text-white">
-                (=) Saldo Final Livre em Caixa
+                (=) Saldo Final Livre em Caixa / Contas
               </td>
               <td className={`py-3 px-4 text-right font-mono tabular-nums text-sm ${
                 saldoFinalCaixa >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'

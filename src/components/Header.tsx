@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
           className="text-lg font-bold tracking-tight text-slate-900 dark:text-white whitespace-nowrap shrink-0 flex items-center gap-2 hover:opacity-90 transition-opacity"
         >
           <span className="w-8 h-8 rounded-lg bg-emerald-600 dark:bg-emerald-500 text-white flex items-center justify-center font-mono font-bold text-base shadow-sm">
-            $
+            €
           </span>
           FinPlanilha
         </button>
@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Lançamentos
+            Movimentos
           </button>
           <button
             onClick={() => onTabChange('orcamento')}
@@ -61,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Metas
+            Objetivos
           </button>
           <button
             onClick={() => onTabChange('relatorios')}
@@ -102,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({
             className="px-4 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 rounded-lg shadow-sm transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
           >
             <Plus className="w-4 h-4" />
-            Novo Lançamento
+            Novo Movimento
           </button>
         </div>
       </div>
@@ -113,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={() => onTabChange('planilha')}
           className={`px-2 py-1 rounded ${activeTab === 'planilha' ? 'text-emerald-600 dark:text-emerald-400 font-bold' : 'text-slate-600 dark:text-slate-400'}`}
         >
-          Planilha
+          Movimentos
         </button>
         <button
           onClick={() => onTabChange('orcamento')}
@@ -125,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={() => onTabChange('metas')}
           className={`px-2 py-1 rounded ${activeTab === 'metas' ? 'text-emerald-600 dark:text-emerald-400 font-bold' : 'text-slate-600 dark:text-slate-400'}`}
         >
-          Metas
+          Objetivos
         </button>
         <button
           onClick={() => onTabChange('relatorios')}

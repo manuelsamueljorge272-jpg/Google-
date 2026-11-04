@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FinancialGoal } from '../types/finance';
-import { formatCurrency, parseCurrencyInput, formatDateBR } from '../utils/formatters';
+import { formatCurrency, parseCurrencyInput, formatDatePT } from '../utils/formatters';
 import { Target, Plus, CheckCircle, Trash2, Calendar, TrendingUp } from 'lucide-react';
 
 interface GoalsViewProps {
@@ -21,7 +21,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
   const [newTarget, setNewTarget] = useState('');
   const [newCurrent, setNewCurrent] = useState('');
   const [newDate, setNewDate] = useState('2027-12-31');
-  const [newCategory, setNewCategory] = useState('Patrimônio');
+  const [newCategory, setNewCategory] = useState('Património');
 
   // Quick deposit modal/inline
   const [depositGoalId, setDepositGoalId] = useState<string | null>(null);
@@ -72,13 +72,13 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
           <span className="text-xs font-medium text-slate-500 dark:text-slate-400 block mb-1">
-            Total em Metas & Objetivos
+            Total em Objetivos de Poupança
           </span>
           <div className="text-2xl font-bold font-mono tabular-nums text-slate-900 dark:text-white">
             {formatCurrency(totalGuardado)}
           </div>
           <span className="text-xs text-slate-500 mt-2 block">
-            {goals.length} objetivos em andamento
+            {goals.length} objetivos em curso
           </span>
         </div>
 
@@ -97,7 +97,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col justify-between">
           <div>
             <span className="text-xs font-medium text-slate-500 dark:text-slate-400 block mb-1">
-              Progresso Geral das Metas
+              Progresso Geral dos Objetivos
             </span>
             <div className="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden mt-2">
               <div
@@ -113,7 +113,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
               onClick={() => setIsAdding(!isAdding)}
               className="text-emerald-600 hover:underline font-semibold"
             >
-              + Nova Meta
+              + Novo Objetivo
             </button>
           </div>
         </div>
@@ -128,7 +128,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
               <Target className="w-4 h-4 text-emerald-600" />
-              Criar Nova Meta Financeira
+              Criar Novo Objetivo de Poupança
             </h3>
             <button
               type="button"
@@ -147,7 +147,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
               <input
                 type="text"
                 required
-                placeholder="Ex: Troca de Carro, Reserva 12 meses..."
+                placeholder="Ex: Fundo de Emergência, Entrada Casa..."
                 value={newTitle}
                 onChange={e => setNewTitle(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white"
@@ -156,12 +156,12 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
 
             <div>
               <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Valor Alvo (R$)
+                Valor Alvo (€)
               </label>
               <input
                 type="text"
                 required
-                placeholder="Ex: 50.000,00"
+                placeholder="Ex: 10.000,00"
                 value={newTarget}
                 onChange={e => setNewTarget(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white font-mono"
@@ -170,11 +170,11 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
 
             <div>
               <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Valor Já Guardado (R$)
+                Valor Já Acumulado (€)
               </label>
               <input
                 type="text"
-                placeholder="Ex: 5.000,00"
+                placeholder="Ex: 2.000,00"
                 value={newCurrent}
                 onChange={e => setNewCurrent(e.target.value)}
                 className="w-full text-xs p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white font-mono"
@@ -206,7 +206,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
               type="submit"
               className="px-4 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg"
             >
-              Salvar Meta
+              Guardar Objetivo
             </button>
           </div>
         </form>
@@ -237,7 +237,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                   <button
                     type="button"
                     onClick={() => onDeleteGoal(goal.id)}
-                    title="Excluir meta"
+                    title="Eliminar objetivo"
                     className="text-slate-400 hover:text-rose-600 p-1 rounded"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -273,7 +273,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                       {perc.toFixed(1)}% concluído
                     </span>
                     <span>
-                      {isComplete ? 'Meta alcançada!' : `Falta ${formatCurrency(faltante)}`}
+                      {isComplete ? 'Objetivo alcançado!' : `Falta ${formatCurrency(faltante)}`}
                     </span>
                   </div>
                 </div>
@@ -283,12 +283,12 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
                   <span className="flex items-center gap-1">
                     <Calendar className="w-3 h-3 text-slate-400" />
-                    <span>Prazo: {formatDateBR(goal.dataLimite)}</span>
+                    <span>Prazo: {formatDatePT(goal.dataLimite)}</span>
                   </span>
                   {isComplete && (
                     <span className="flex items-center gap-1 text-emerald-600 font-medium">
                       <CheckCircle className="w-3.5 h-3.5" />
-                      Atingido
+                      Concluído
                     </span>
                   )}
                 </div>
@@ -297,7 +297,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                   <div className="flex items-center gap-2">
                     <input
                       type="text"
-                      placeholder="Valor aporte (R$)"
+                      placeholder="Valor reforço (€)"
                       value={depositAmount}
                       onChange={e => setDepositAmount(e.target.value)}
                       className="w-full text-xs p-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded font-mono"
@@ -308,7 +308,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                       onClick={() => handleApplyDeposit(goal)}
                       className="px-2.5 py-1.5 text-xs font-semibold text-white bg-emerald-600 rounded hover:bg-emerald-700 whitespace-nowrap"
                     >
-                      Aportar
+                      Reforçar
                     </button>
                     <button
                       type="button"
@@ -328,7 +328,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
                     className="w-full py-1.5 px-3 text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 rounded-lg transition-colors flex items-center justify-center gap-1.5"
                   >
                     <TrendingUp className="w-3.5 h-3.5" />
-                    Registrar Aporte
+                    Registar Reforço
                   </button>
                 )}
               </div>

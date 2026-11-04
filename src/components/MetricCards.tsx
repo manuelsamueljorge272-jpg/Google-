@@ -56,7 +56,7 @@ export const MetricCards: React.FC<MetricCardsProps> = ({
           {formatCurrency(totalBalance)}
         </div>
         <div className="mt-2 text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-          <span>{accounts.length} contas cadastradas</span>
+          <span>{accounts.length} contas registadas</span>
           <span aria-hidden="true">·</span>
           <span>Atualizado hoje</span>
         </div>
@@ -107,10 +107,10 @@ export const MetricCards: React.FC<MetricCardsProps> = ({
         </div>
         <div className="mt-2 text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
           <span className="font-medium text-emerald-600 dark:text-emerald-400">
-            {taxaPoupanca > 0 ? `${taxaPoupanca.toFixed(1)}% economizado` : '0% poupado'}
+            {taxaPoupanca > 0 ? `${taxaPoupanca.toFixed(1)}% taxa de poupança` : '0% poupado'}
           </span>
           <span aria-hidden="true">·</span>
-          <span>Aportes: {formatCurrency(periodInvestimentos)}</span>
+          <span>Poupança: {formatCurrency(periodInvestimentos)}</span>
         </div>
       </div>
     </div>

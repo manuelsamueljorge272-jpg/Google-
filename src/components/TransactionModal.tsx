@@ -68,7 +68,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
         {/* Header */}
         <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
           <h3 className="text-base font-bold text-slate-900 dark:text-white">
-            {initialData ? 'Editar Lançamento' : 'Novo Lançamento'}
+            {initialData ? 'Editar Movimento' : 'Novo Movimento'}
           </h3>
           <button
             type="button"
@@ -130,7 +130,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                     : 'text-slate-600 dark:text-slate-400'
                 }`}
               >
-                Aporte (•)
+                Poupança (•)
               </button>
             </div>
           </div>
@@ -139,7 +139,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Valor (R$) *
+                Valor (€) *
               </label>
               <input
                 type="text"
@@ -153,7 +153,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
             </div>
             <div>
               <label className="block font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Data do Lançamento *
+                Data do Movimento *
               </label>
               <input
                 type="date"
@@ -168,12 +168,12 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
           {/* Descrição */}
           <div>
             <label className="block font-medium text-slate-700 dark:text-slate-300 mb-1">
-              Descrição do Lançamento *
+              Descrição do Movimento *
             </label>
             <input
               type="text"
               required
-              placeholder="Ex: Supermercado, Salário, Internet..."
+              placeholder="Ex: Supermercado Continente, Vencimento, EDP..."
               value={descricao}
               onChange={e => setDescricao(e.target.value)}
               className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-emerald-500"
@@ -220,7 +220,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
           {/* Status */}
           <div>
             <label className="block font-medium text-slate-700 dark:text-slate-300 mb-1">
-              Situação do Pagamento
+              Estado do Movimento
             </label>
             <div className="flex gap-4">
               <label className="flex items-center gap-2 cursor-pointer text-slate-800 dark:text-slate-200">
@@ -232,7 +232,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                   onChange={() => setStatus('liquidado')}
                   className="text-emerald-600 focus:ring-emerald-500"
                 />
-                <span>Liquidado (Pago / Recebido)</span>
+                <span>Liquidado (Pago / Cobrado)</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer text-slate-800 dark:text-slate-200">
                 <input
@@ -251,11 +251,11 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
           {/* Observações */}
           <div>
             <label className="block font-medium text-slate-700 dark:text-slate-300 mb-1">
-              Observações & Tags (Opcional)
+              Observações & Notas (Opcional)
             </label>
             <input
               type="text"
-              placeholder="Número de nota fiscal, parcelamento 2/10, etc."
+              placeholder="Ex: NIF na fatura, referência Multibanco, débito direto..."
               value={observacoes}
               onChange={e => setObservacoes(e.target.value)}
               className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-emerald-500"
@@ -275,7 +275,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
               type="submit"
               className="px-5 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors shadow-xs"
             >
-              {initialData ? 'Atualizar Lançamento' : 'Confirmar Lançamento'}
+              {initialData ? 'Atualizar Movimento' : 'Confirmar Movimento'}
             </button>
           </div>
         </form>
