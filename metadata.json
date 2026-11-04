@@ -1,0 +1,6 @@
+{
+  "name": "Planilha de Controle Financeiro",
+  "description": "Planilha completa e intuitiva de gestão financeira pessoal e empresarial com controle de receitas, despesas, orçamento planejado vs realizado, metas e relatórios.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
